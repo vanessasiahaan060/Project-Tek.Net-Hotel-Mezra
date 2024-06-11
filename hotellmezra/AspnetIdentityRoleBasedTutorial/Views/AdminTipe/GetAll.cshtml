@@ -1,0 +1,35 @@
+﻿@model List<AspnetIdentityRoleBasedTutorial.Data.KategoriKamar>
+
+<h1>Daftar Kategori Kamar</h1>
+
+<p>
+    <a asp-action="TambahTipe" class="btn btn-primary">Tambah Tipe Kamar</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nama Kategori</th>
+            <th>Aksi</th> <!-- Kolom untuk tombol Edit dan Hapus -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kategori in Model)
+        {
+            <tr>
+                <td>@kategori.KategoriID</td>
+                <td>@kategori.NamaKategori</td>
+                <td>
+                    <!-- Tombol Edit dengan link ke halaman EditTipe -->
+                    <a asp-action="EditTipe" asp-route-id="@kategori.KategoriID" class="btn btn-primary">Edit</a>
+
+                    <!-- Tombol Hapus dengan form POST -->
+                    <form asp-action="HapusTipe" asp-route-id="@kategori.KategoriID" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus tipe ini?')">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

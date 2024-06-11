@@ -1,0 +1,45 @@
+﻿@model AspnetIdentityRoleBasedTutorial.Data.KamarViewModel
+
+@{
+    ViewData["Title"] = "Tambah Kamar";
+}
+
+<h1>Tambah Kamar</h1>
+
+<form asp-action="TambahKamar" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Kamar.NomorKamar">Nomor Kamar</label>
+        <input asp-for="Kamar.NomorKamar" type="text" class="form-control" />
+        <span asp-validation-for="Kamar.NomorKamar" class="text-danger"></span>
+    </div>
+
+    <!-- Dropdown/Select untuk Kategori Kamar -->
+    <div class="form-group">
+        <label asp-for="KategoriKamar.KategoriID">Kategori Kamar</label>
+        <select asp-for="KategoriKamar.KategoriID" asp-items="@(ViewBag.KategoriList as SelectList)" class="form-control">
+            <option value="">Pilih Kategori Kamar</option>
+        </select>
+        <span asp-validation-for="KategoriKamar.KategoriID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Kamar.Price">Harga</label>
+        <input asp-for="Kamar.Price" type="number" class="form-control" />
+        <span asp-validation-for="Kamar.Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Kamar.Ketersediaa">Ketersediaan</label>
+        <input asp-for="Kamar.Ketersediaa" type="checkbox" class="form-control" />
+        <span asp-validation-for="Kamar.Ketersediaa" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Simpan</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

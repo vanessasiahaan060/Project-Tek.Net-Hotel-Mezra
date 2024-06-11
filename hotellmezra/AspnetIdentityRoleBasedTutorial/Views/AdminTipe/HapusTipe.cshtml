@@ -1,0 +1,14 @@
+﻿@model AspnetIdentityRoleBasedTutorial.Data.KategoriKamar
+@{
+    ViewData["Title"] = "Hapus Kategori Kamar";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Apakah Anda yakin ingin menghapus kategori "@Model.NamaKategori"?</p>
+
+<form asp-action="HapusTipeConfirmed" method="post">
+    <input type="hidden" asp-for="KategoriID" />
+    <button type="submit" class="btn btn-danger">Hapus</button>
+    <a asp-action="GetAll" class="btn btn-secondary">Batal</a>
+</form>

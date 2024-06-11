@@ -1,0 +1,21 @@
+﻿@model AspnetIdentityRoleBasedTutorial.Data.KategoriKamar
+@{
+    ViewData["Title"] = "Edit Kategori Kamar";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@ViewData["ErrorMessage"]</div>
+}
+
+<form asp-action="EditTipe" method="post">
+    <input type="hidden" asp-for="KategoriID" />
+    <div class="form-group">
+        <label asp-for="NamaKategori" class="control-label">Nama Kategori:</label>
+        <input asp-for="NamaKategori" class="form-control" />
+        <span asp-validation-for="NamaKategori" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+</form>
